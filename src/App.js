@@ -44,24 +44,43 @@
 
 // export default App
 
-import React, { useState } from 'react'
+// import React, { useState } from 'react'
+
+// function App() {
+//   const [count, setCount] = useState(0); 
+
+//   const increment = () => {
+//     setCount(count + 1)
+//   }
+
+//   const decrement = () => {
+//     setCount(count - 1)
+//   }
+
+//   return (
+//     <div>
+//       <p>The count is: {count}</p>
+//       <button onClick={increment}> + </button>
+//       <button onClick={decrement}> - </button>
+//     </div>
+//   )
+// }
+
+// export default App
+
+
+
+import React from 'react'
+import Product from './Product'
 
 function App() {
-  const [count, setCount] = useState(0); 
-
-  const increment = () => {
-    setCount(count + 1)
-  }
-
-  const decrement = () => {
-    setCount(count - 1)
-  }
-
   return (
     <div>
-      <p>The count is: {count}</p>
-      <button onClick={increment}> + </button>
-      <button onClick={decrement}> - </button>
+      <h1>Hello World</h1>
+      <Product name="Amazon Echo" description="Your AI Assistant" price={59.99} />
+      <Product name="Amazon Echo" description="Your AI Assistant" price={59.99} />
+      <Product name="Amazon Echo" description="Your AI Assistant" price={59.99} />
+      <Product name="Amazon Echo" description="Your AI Assistant" price={59.99} />
     </div>
   )
 }
