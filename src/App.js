@@ -1,39 +1,67 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+// import axios from 'axios';
+// import React, { useEffect, useState } from 'react'
+
+// function App() {
+//   const [data, setData] = useState([]);
+
+
+//     useEffect(()=> {
+//       axios.get("https://jsonplaceholder.typicode.com/users")
+//         .then((res) => {
+//           setData(res.data);
+//           console.log(data)
+//         })
+//         .catch((err) => {
+//           console.log(err);
+//         })
+//         return () => {
+//           console.log('Object ')
+//         }
+//     }, [])
+
+
+//   return (
+//     <div>
+//       {data ? (
+//         <ul>
+//           {
+//             data.map((item) => {
+//               return (
+//                 <>
+//                 <li key={item.id}>{item.name}</li>
+//                 <li key={item.idx}>{item.phone}</li>
+//                 </>
+//               )
+//             })
+//           }
+//         </ul>
+//       ) : (
+//         <p>Loading...</p>
+//       )}
+//     </div>
+//   )
+// }
+
+// export default App
+
+import React, { useState } from 'react'
 
 function App() {
-  const [data, setData] = useState([]);
+  const [count, setCount] = useState(0); 
 
-    useEffect(()=> {
-      axios.get("https://jsonplaceholder.typicode.com/users")
-        .then((res) => {
-          setData(res.data);
-          console.log(data)
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-    },[])
+  const increment = () => {
+    setCount(count + 1)
+  }
 
+  const decrement = () => {
+    setCount(count - 1)
+  }
 
   return (
     <div>
-      {data ? (
-        <ul>
-          {
-            data.map((item) => {
-              return (
-                <>
-                <li key={item.id}>{item.name}</li>
-                <li key={item.idx}>{item.phone}</li>
-                </>
-              )
-            })
-          }
-        </ul>
-      ) : (
-        <p>Loading...</p>
-      )}
+      <p>The count is: {count}</p>
+      <button onClick={increment}> + </button>
+      <button onClick={decrement}> - </button>
     </div>
   )
 }
