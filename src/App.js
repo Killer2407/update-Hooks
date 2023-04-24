@@ -1,24 +1,51 @@
-import React, { useState } from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 
 function App() {
-  const [firstName, setFirstName]= useState('');
-  const [lastName, setLastName] = useState('')
+  const [data, setData] = useState([])
+  const [loading, setLoading] = useState(true)
 
-  const generateName = (e) => {
-    e.preventDefault();
-  }
-  
-  
+  // useEffect(() => {
+  //   const fetchApi = async() => {
+  //     await fetch('https://jsonplaceholder.typicode.com/posts')
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       console.log(data)
+  //       setName(data)}
+  //     )
+  //   }
+  //   fetchApi();
+  // },[])
+
+  useEffect(() =>{
+    axios.get('https://jsonplaceholder.typicode.com/posts')
+    .then((res) => {
+      console.log(res)
+      setData(res.data)
+      setLoading(false)
+    })
+    .catch((err)=> {
+      console.log(err)
+    })
+  },[])
+
   return (
     <div>
-      <form>
-        <input placeholder='First Name' value={firstName} onChange={e => setFirstName(e.target.value)} />
-        <input placeholder='Last Name' value={lastName} onChange={e => setLastName(e.target.value)} />
-        <button onClick={generateName}> Generate Name </button>
-      </form>
-
+    {
+      loading ? ('Loading') : (
+        <div className='app'>
+          <ul>
+            {data.map((item) => {
+              return (
+                <li key={item.id}>{item.title}</li>
+              )
+            })}
+          </ul>
+        </div>
+      )
+    }
     </div>
   )
 }
 
-export default App
+export default App  
